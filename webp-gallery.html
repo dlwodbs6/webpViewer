@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebP 갤러리</title>
+<link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACh0lEQVR4nO2au47UMBSGv2RmC5rdWQlRAK9AQ0kBNEhIgJCAR+E1eBQquhUN20BFT0NJw3AZoECaHUJhW3MmImMnsfesiT/JyozGl//8PkmciWHiVAnaNEOEZDS+lwqYJeh3BtSxO+2bARVw5Gn3zR5rW28zQJdkhpnVP/b7saf+StSNhgt4AXwEvgJf7NGVpS0nwD3RtmZYRrRn/DbwSowjx3ZaPgFXxbjRcAYcAz8wM+IrQ41oB34HE3jImGvguhgvGtKAz3agDSbV2uXM/tbXCF/gru9/jbmxmn6R2IAF8NsKOrOlazZCjagJC7xrnE3r92ui/6i4q/sD4M0eAX2NcLhzvE/gst+3wBNgzrDbe28eMt6Iu8Atxgf+NG2ou8zYdXisEbECT7X+6CSGEfLCmU3gbcYaoR54FanM2b3yPgJORQButn2Bt+u9A56xNbkWY8XQnZz7wGv6Z8Ap8Di1uAr/2npovzVmJn8ClzDBPAduiDqSxh4/AC+Al7btoeirITIVZg2dkhlG/ApjxBVP/SVmRXdk2459mNpLRQJXc2LO+Rtwof7QmHwGRH9gyI15QJ3cM2TvKTf5U8CXAQ3m9pWrSd7/MLsMaGyjFXAT+E5e2eK0LoD39uhi2iEkA5aYFVmOuIewTkIuggdsHxxyy4ADX8XQu0AjPueC1N3J5NcBxQBtAdoUA7QFaFMM0BagTTFAW4A2xQBtAdoUA7QFaFMM0BagTTFAW4A2xQBtAdoUA7QFaFMM0BagTTFAW4A2IW+GznVPXSSq1rGTEAPWBL5mukA4rWtfRZ8BFXCZ7Rb0XEyQr8dH7RD57zdI5DSrSSibpMg/wFFMfh1QDNAWoM3kDfgLBaFOcZXfWAwAAAAASUVORK5CYII=">
+<link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath d=%22M3 1h2l3 1.5L11 1h2v1L9 4H7L3 2z%22/%3E%3Cpath fill-rule=%22evenodd%22 d=%22M0 4h16v12H0zM2 6v8h12V6z%22/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFc0lEQVR4nO3dv28bdRyH8cdpKtFWDM2CQOHHiAQMDOyFAYmBPwOWMoFE+Q8ovwZgBjZmNlb+CBhhKDAhSJCokpDEYbg7+eLYjhv89d29/bykU+JWurPPj7/51D8akCRJkiRJkiRJ0lJGXV+B2ohy12UEnAHjQvsfiq16K3UezupNa3KN6g7dNCOq274Rul6hmxXjZeBTqkf4qq5Ts6+fgc+Bn+o/v8ZmrNhNyCf15V3gLvBK6+9X4bQ+zpfAd/X3pyva9+A0K8frTH5kldiOgK+AF6aOnbhij4Dt1uWngY+Avyh7jt+tj9c+9sZpgn6VaiX5t/66yu2YyUk/pAr7xanrkBD29Gixy8WQj1n9+T2sv96tj2vQwGtUJ/yUMqvHmOqkt1fsr8kIe3pF3gXuczHkMWXObbNgvFMf36ApH/SisIc6iiwzWpQM2aBnWHfQl4U9hBV71orcRcgGPUNXQS8Ku6+jSNejhUEvoeugh7Bizxot7gN/0m3IBj1DX4LuY9h9mZEN+hG0n7Y7pfugF4W9rlGkr6PFoqDH+LQdcPGFlSP6c0etO+y+jxbzzs9B/b0vrFCFMAJeAn6l33dcqaf7hjJaTJ+P9gtWfwNvsmHvG5mneU/BbeAewwv7qiv20EaLWSHvUb0H59nWbRLnT8QO2WHPC7nvo0U75H3gE+CZqdulluk7+jbwPvCAft/Ry44iCaPFPudX5Ob2GfMC88Ie0oo9601Qja5f2btKyHtcDHkbQ34ks8Ie4ijyDfA88CTDnJGnRwtX5P8pYRQ5oIqjz9f3stHCFXnFEkaRPl4/R4uODXUU6dv1mTVatEN2tFiz6bB36P8o0vU2b7Roz8iuyB0b4ozdh5A/w9Gi14Y4iqw75D0cLQZn1ihyj81asZcZLQx5YDZxFPGVvQ2wCaOIT79toMRRxNFCEaOIr+zpgqG+8uhooYXmjSJ9CnuZ9yM7WuicPo4iPmtxBSO3c9sWcL11fnaAD4DfmIS1jk+nt4+xT/XK3nOt63WdScxuk01Lehx4D/iF9a3QfwAfAk+t4fZFGFH9aNV8I6qV8Aj4h2qVfAt4m8m5W+XKcFYf61vgC+BH4DHgBpNxR3OMqD5Bocs1YR9Shf0EcLPQsY6B36kivsnk7ae6xAgf8QqyjUFfVel/gHi/XIErtKL04f89llbGoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBXFoBWl5O9l9nNwmmeLQoupn1hRlBIr9Jjq0fdDvW3hSq1K08KdemtaWZmSQX8PfFxg/xq+AwYUdONWvf9tqt/VJzUt3Cp5gFKaXzoJBq2JEwqOoD5tpygGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSgGrSjbBfe9Ve+/5DE0LE0LxRbSkrE9BE7qTYJJCw9LHaBE0M2j7w3gRn15XOA4Gp6mhTutyys1As5WvVOpKyVHjjGuzJpti0JztCu0ovi0naIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKIYtKL8B29ttS/pIEAwAAAAAElFTkSuQmCC">
+<style>
+  :root {
+    --bg: #15161a;
+    --panel: #1d1f25;
+    --line: #34373f;
+    --text: #e8e6e1;
+    --muted: #8c8f98;
+    --accent: #7fd1c0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: var(--bg); color: var(--text);
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; overflow: hidden; }
+  [hidden] { display: none !important; }
+
+  /* ---------- 업로드 화면 (폴더가 없을 때 / 드래그할 때) ---------- */
+  #start { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--bg); }
+  #start.overlay { z-index: 20; background: rgba(21,22,26,.94); }
+  #drop {
+    width: min(560px, 100%); padding: 56px 32px; text-align: center;
+    border: 2px dashed var(--line); border-radius: 20px; background: var(--panel);
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  #drop.over, #start.overlay #drop { border-color: var(--accent); background: #1a2624; }
+  #drop.over { transform: scale(1.015); }
+  #drop h1 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+  #drop p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+  .btn {
+    padding: 12px 22px; font: inherit; font-size: 14px; font-weight: 600;
+    background: var(--accent); color: #0d1f1b; border: 0; border-radius: 10px; cursor: pointer;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  #pick { margin-top: 28px; }
+  .btn:focus-visible, .album:focus-visible, .rm:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  #msg { margin-top: 18px; min-height: 20px; font-size: 13px; color: #e8a08a; }
+
+  /* ---------- 폴더/앨범 목록 ---------- */
+  #albums { position: fixed; inset: 0; overflow-y: auto; padding: 28px clamp(16px, 4vw, 48px) 48px; }
+  #albums header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  #albums h2 { flex: 1; min-width: 0; font-size: 20px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #albums .sub { font-size: 13px; color: var(--muted); flex-shrink: 0; }
+  #add { flex-shrink: 0; padding: 9px 14px; }
+  .back { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; font: inherit; font-size: 14px; font-weight: 600;
+    color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; cursor: pointer; transition: border-color .15s; }
+  .back:hover { border-color: var(--accent); }
+  .back:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+  .cardwrap { position: relative; }
+  .album { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .cover { position: relative; aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: var(--panel);
+    border: 1px solid var(--line); transition: border-color .15s, transform .15s; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* 하위 폴더가 있는 항목은 겹쳐 쌓인 카드 모양으로 구분 */
+  .album.group .cover { box-shadow: 6px -6px 0 -1px var(--panel), 6px -6px 0 0 var(--line); margin-right: 6px; margin-top: 6px; }
+  .album:hover .cover, .album:focus-visible .cover { border-color: var(--accent); transform: translateY(-3px); }
+  .album .t { margin-top: 10px; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .album .n { margin-top: 2px; font-size: 12px; color: var(--muted); }
+  .rm { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 8px; font-size: 13px; line-height: 1;
+    color: var(--text); background: rgba(21,22,26,.85); border: 1px solid var(--line); cursor: pointer; opacity: 0; transition: opacity .15s, border-color .15s; }
+  .cardwrap.group .rm { top: 14px; right: 14px; }
+  .cardwrap:hover .rm, .rm:focus-visible { opacity: 1; }
+  .rm:hover { border-color: #e8a08a; color: #e8a08a; }
+
+  /* ---------- 뷰어 ---------- */
+  #viewer { position: fixed; inset: 0; background: #000; user-select: none; }
+  #stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .zone { position: absolute; top: 0; bottom: 0; width: 22%; cursor: pointer; display: flex; align-items: center; }
+  .zone.l { left: 0; justify-content: flex-start; padding-left: 20px; }
+  .zone.r { right: 0; justify-content: flex-end; padding-right: 20px; }
+  .zone span { font-size: 40px; color: #fff; opacity: 0; transition: opacity .15s; text-shadow: 0 2px 10px #000; }
+  .zone:hover span { opacity: .7; }
+  #bar {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px;
+    display: flex; justify-content: space-between; gap: 16px; font-size: 13px;
+    background: linear-gradient(transparent, rgba(0,0,0,.75)); color: #d7d7d7;
+    transition: opacity .25s; pointer-events: none;
+  }
+  #name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #count { flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  #hint { position: absolute; top: 14px; right: 18px; font-size: 12px; color: #aaa;
+    background: rgba(0,0,0,.55); padding: 6px 10px; border-radius: 8px; transition: opacity .25s; pointer-events: none; }
+  #vback { position: absolute; top: 14px; left: 18px; background: rgba(0,0,0,.55); border-color: rgba(255,255,255,.18);
+    padding: 7px 12px; font-size: 13px; transition: opacity .25s, border-color .15s; }
+  #viewer.idle #bar, #viewer.idle #hint, #viewer.idle #vback { opacity: 0; }
+  #viewer.idle { cursor: none; }
+
+  /* ---------- 알림 ---------- */
+  #toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 12px); z-index: 30; max-width: min(92vw, 520px);
+    padding: 11px 18px; font-size: 13px; line-height: 1.5; background: var(--panel); color: var(--text);
+    border: 1px solid var(--line); border-radius: 10px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+  #toast.on { opacity: 1; transform: translate(-50%, 0); }
+</style>
+</head>
+<body>
+
+<!-- 1. 업로드 화면 -->
+<div id="start" hidden>
+  <div id="drop">
+    <h1>WebP 갤러리</h1>
+    <p>폴더를 여기로 끌어다 놓으세요.<br>
+       .webp가 든 폴더, 그런 폴더가 여러 개 든 폴더,<br>
+       그 위로 몇 단계 더 겹친 폴더도 열 수 있어요.<br>
+       한 번 올린 폴더는 다음에 열어도 남아 있어요.</p>
+    <button id="pick" class="btn" type="button">폴더 선택</button>
+    <input id="input" type="file" webkitdirectory directory multiple hidden>
+    <div id="msg" role="status"></div>
+  </div>
+</div>
+
+<!-- 2. 폴더/앨범 목록 -->
+<div id="albums" hidden>
+  <header>
+    <button type="button" class="back" id="back">← 뒤로</button>
+    <h2 id="albumsTitle">내 폴더</h2>
+    <span class="sub" id="sub"></span>
+    <button type="button" class="btn" id="add">＋ 폴더 추가</button>
+  </header>
+  <div id="grid"></div>
+</div>
+
+<!-- 3. 이미지 뷰어 -->
+<div id="viewer" hidden>
+  <div id="stage"><img id="img" alt=""></div>
+  <div class="zone l" id="zl"><span>‹</span></div>
+  <div class="zone r" id="zr"><span>›</span></div>
+  <button type="button" class="back" id="vback">← 뒤로</button>
+  <div id="hint">← → 이동 · Home/End · F 전체화면 · ESC 뒤로</div>
+  <div id="bar"><div id="name"></div><div id="count"></div></div>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const start = $('start'), drop = $('drop'), input = $('input'), pick = $('pick'), msg = $('msg');
+  const albumsEl = $('albums'), grid = $('grid'), albumsTitle = $('albumsTitle'), subEl = $('sub');
+  const backBtn = $('back'), addBtn = $('add'), toastEl = $('toast');
+  const viewer = $('viewer'), img = $('img'), nameEl = $('name'), countEl = $('count');
+
+  let view = null;        // 'start' | 'albums' | 'viewer'
+  let lib = [];           // 저장된 이미지 전부: { root, path, file }
+  let root = null;        // 폴더 트리의 뿌리 (= 내 폴더 목록)
+  let gridNode = null;    // 지금 목록으로 보여주는 폴더 (뷰어에서 돌아갈 곳)
+  let covers = [];        // 목록 표지용 object URL
+  let items = [];         // 지금 보는 이미지들: { file, url, path }
+  let index = 0;
+  let idleTimer = null;
+  let toastTimer = null;
+  let depth = 0;          // 드래그 진입 횟수 (깜빡임 방지)
+  const isWebp = f => /\.webp$/i.test(f.name);
+
+  function setView(v) {
+    view = v;
+    start.classList.remove('overlay');
+    start.hidden = v !== 'start';
+    albumsEl.hidden = v !== 'albums';
+    viewer.hidden = v !== 'viewer';
+  }
+
+  function toast(text) {
+    toastEl.textContent = text;
+    toastEl.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('on'), 4500);
+  }
+
+  /* ---------- 저장소 (IndexedDB) ---------- */
+  let db = null;
+  const STORE = 'imgs';
+
+  function openDB() {
+    return new Promise(resolve => {
+      try {
+        const r = indexedDB.open('webp-gallery', 1);
+        r.onupgradeneeded = () => {
+          const s = r.result.createObjectStore(STORE, { keyPath: 'id', autoIncrement: true });
+          s.createIndex('root', 'root');
+        };
+        r.onsuccess = () => resolve(r.result);
+        r.onerror = () => resolve(null);
+        r.onblocked = () => resolve(null);
+      } catch (e) { resolve(null); }
+    });
+  }
+  const reqP = r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+  const txDone = tx => new Promise((res, rej) => {
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+    tx.onabort = () => rej(tx.error || new Error('abort'));
+  });
+
+  async function dbLoad() {
+    if (!db) return [];
+    try { return await reqP(db.transaction(STORE).objectStore(STORE).getAll()); }
+    catch (e) { return []; }
+  }
+  async function dbSave(recs) {
+    if (!db) return false;
+    try {
+      const tx = db.transaction(STORE, 'readwrite');
+      const s = tx.objectStore(STORE);
+      for (const r of recs) s.add({ root: r.root, path: r.path, file: r.file });
+      await txDone(tx);
+      if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+      return true;
+    } catch (e) { return false; }
+  }
+  async function dbRemoveRoot(name) {
+    if (!db) return;
+    try {
+      const tx = db.transaction(STORE, 'readwrite');
+      const c = tx.objectStore(STORE).index('root').openCursor(IDBKeyRange.only(name));
+      c.onsuccess = () => { const cur = c.result; if (cur) { cur.delete(); cur.continue(); } };
+      await txDone(tx);
+    } catch (e) { /* 무시 */ }
+  }
+
+  /* ---------- 폴더 읽기 ---------- */
+  pick.addEventListener('click', () => input.click());
+  addBtn.addEventListener('click', () => input.click());
+  input.addEventListener('change', () => {
+    const files = [...input.files].filter(isWebp).map(f => ({ file: f, path: f.webkitRelativePath || f.name }));
+    input.value = '';
+    handleNew(files);
+  });
+
+  const hasFiles = e => e.dataTransfer && [...(e.dataTransfer.types || [])].includes('Files');
+
+  function showOverlay(on) {
+    if (view !== 'albums') return;
+    start.hidden = !on;
+    start.classList.toggle('overlay', on);
+  }
+  function endDrag() {
+    depth = 0;
+    drop.classList.remove('over');
+    showOverlay(false);
+  }
+
+  window.addEventListener('dragenter', e => {
+    e.preventDefault();
+    if (!hasFiles(e) || view === 'viewer') return;
+    depth++;
+    drop.classList.add('over');
+    showOverlay(true);       // 목록을 보는 중에 폴더를 끌어오면 업로드 화면을 띄운다
+  });
+  window.addEventListener('dragover', e => e.preventDefault());
+  window.addEventListener('dragleave', e => {
+    e.preventDefault();
+    if (!hasFiles(e)) return;
+    depth = Math.max(0, depth - 1);
+    if (depth === 0) endDrag();
+  });
+  window.addEventListener('mousemove', () => {
+    if (start.classList.contains('overlay')) endDrag();   // 드래그가 취소된 경우
+  });
+  window.addEventListener('drop', async e => {
+    e.preventDefault();
+    const wasViewer = view === 'viewer';
+    const dtItems = [...(e.dataTransfer.items || [])];
+    const entries = dtItems.map(i => i.webkitGetAsEntry && i.webkitGetAsEntry()).filter(Boolean);
+    const loose = [...(e.dataTransfer.files || [])].filter(isWebp);
+    endDrag();
+    if (wasViewer) return;
+    if (!entries.length) { handleNew(loose.map(f => ({ file: f, path: f.name }))); return; }
+    toast('폴더를 읽는 중…');
+    const found = [];
+    for (const en of entries) await walk(en, found);
+    handleNew(found);
+  });
+
+  // 폴더 안에 들어 있는 순서 그대로 읽는다 (정렬하지 않음)
+  async function walk(entry, out) {
+    if (entry.isFile) {
+      if (/\.webp$/i.test(entry.name)) {
+        const file = await new Promise((res, rej) => entry.file(res, rej));
+        out.push({ file, path: entry.fullPath.replace(/^\//, '') });
+      }
+    } else if (entry.isDirectory) {
+      const reader = entry.createReader();
+      while (true) {
+        const batch = await new Promise((res, rej) => reader.readEntries(res, rej));
+        if (!batch.length) break;
+        for (const child of batch) await walk(child, out);
+      }
+    }
+  }
+
+  async function handleNew(list) {
+    if (!list.length) {
+      const t = '.webp 파일을 찾지 못했어요. 다른 폴더를 선택해 보세요.';
+      msg.textContent = t;
+      toast(t);
+      return;
+    }
+    msg.textContent = '';
+    await addToLibrary(list);
+  }
+
+  async function addToLibrary(list) {
+    // 폴더 없이 낱개로 들어온 파일은 '낱개 이미지' 폴더로 묶는다
+    list = list.map(it => ({ file: it.file, path: it.path.includes('/') ? it.path : '낱개 이미지/' + it.path }));
+    const recs = list.map(it => ({ root: it.path.split('/')[0], path: it.path, file: it.file }));
+
+    // 같은 이름의 폴더는 새로 올린 것으로 바꾼다
+    const names = [...new Set(recs.map(r => r.root))];
+    const replaced = names.filter(n => lib.some(x => x.root === n));
+    for (const n of replaced) {
+      lib = lib.filter(x => x.root !== n);
+      await dbRemoveRoot(n);
+    }
+
+    lib.push(...recs);
+    const ok = await dbSave(recs);
+    rebuild();
+    showGrid(root);
+
+    if (!ok) toast('이 브라우저에서는 폴더를 저장하지 못했어요. 창을 닫으면 사라져요.');
+    else if (replaced.length) toast(`같은 이름의 폴더(${replaced.join(', ')})를 새로 올린 것으로 바꿨어요.`);
+  }
+
+  async function removeRoot(name) {
+    if (!confirm(`'${name}'을(를) 목록에서 삭제할까요?\n(컴퓨터에 있는 원본 폴더는 지워지지 않아요.)`)) return;
+    lib = lib.filter(x => x.root !== name);
+    await dbRemoveRoot(name);
+    rebuild();
+    home();
+  }
+
+  /* ---------- 폴더 트리 ---------- */
+  function mkNode(name, parent) {
+    return { name, parent, children: new Map(), files: [], total: 0, cover: null };
+  }
+
+  // 하위 폴더가 하나뿐이고 직접 든 이미지가 없으면, 그 폴더는 건너뛰고 안으로 들어간다
+  const isPass = n => n !== root && !n.files.length && n.children.size === 1;
+
+  function rebuild() {
+    root = mkNode('', null);
+    for (const it of lib) {
+      const dirs = it.path.split('/').slice(0, -1);
+      let n = root;
+      touch(n, it);
+      for (const d of dirs) {
+        if (!n.children.has(d)) n.children.set(d, mkNode(d, n));
+        n = n.children.get(d);
+        touch(n, it);
+      }
+      n.files.push(it);
+    }
+  }
+
+  function touch(n, it) {
+    n.total++;
+    if (!n.cover) n.cover = it.file;
+  }
+
+  // 저장된 폴더가 있으면 목록, 없으면 업로드 화면
+  function home() {
+    if (lib.length) showGrid(root);
+    else { gridNode = null; setView('start'); }
+  }
+
+  // 폴더로 들어간다: 하위 폴더가 있으면 목록, 없으면 바로 이미지 보기
+  function enter(node) {
+    while (isPass(node)) node = node.children.values().next().value;
+    if (!node.children.size) openViewer(node.files);
+    else showGrid(node);
+  }
+
+  // 한 단계 위로: 건너뛴 폴더는 거른다
+  function up(node) {
+    let p = node.parent;
+    while (p && p !== root && isPass(p)) p = p.parent;
+    showGrid(p || root);
+  }
+
+  /* ---------- 목록 ---------- */
+  function clearCovers() {
+    covers.forEach(u => URL.revokeObjectURL(u));
+    covers = [];
+  }
+
+  function pathOf(node) {
+    const names = [];
+    for (let n = node; n; n = n.parent) if (n.name) names.unshift(n.name);
+    return names.join(' / ');
+  }
+
+  function showGrid(node) {
+    clearCovers();
+    gridNode = node;
+    const atRoot = node === root;
+    albumsTitle.textContent = atRoot ? '내 폴더' : pathOf(node);
+    subEl.textContent = atRoot ? '폴더를 끌어다 놓으면 추가돼요' : '클릭해서 열기 · ESC 뒤로';
+    backBtn.hidden = atRoot;
+    addBtn.hidden = !atRoot;
+    grid.textContent = '';
+
+    const cards = [];
+    for (const child of node.children.values()) {
+      const leaf = !child.children.size;
+      cards.push({
+        name: child.name,
+        cover: child.cover,
+        group: !leaf,
+        removable: atRoot,
+        info: leaf ? `${child.total}장` : `폴더 ${child.children.size}개 · ${child.total}장`,
+        open: () => enter(child),
+      });
+    }
+    if (node.files.length) {
+      cards.push({
+        name: '이 폴더의 이미지',
+        cover: node.files[0].file,
+        group: false,
+        removable: false,
+        info: `${node.files.length}장`,
+        open: () => openViewer(node.files),
+      });
+    }
+
+    for (const c of cards) {
+      const url = URL.createObjectURL(c.cover);
+      covers.push(url);
+      const wrap = document.createElement('div');
+      wrap.className = 'cardwrap' + (c.group ? ' group' : '');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'album' + (c.group ? ' group' : '');
+      b.innerHTML = '<div class="cover"><img loading="lazy" decoding="async" alt=""></div><div class="t"></div><div class="n"></div>';
+      b.querySelector('img').src = url;
+      b.querySelector('.t').textContent = c.name;
+      b.querySelector('.n').textContent = c.info;
+      b.title = c.name;
+      b.addEventListener('click', c.open);
+      wrap.appendChild(b);
+      if (c.removable) {
+        const x = document.createElement('button');
+        x.type = 'button';
+        x.className = 'rm';
+        x.textContent = '✕';
+        x.title = '목록에서 삭제';
+        x.setAttribute('aria-label', `${c.name} 삭제`);
+        x.addEventListener('click', ev => { ev.stopPropagation(); removeRoot(c.name); });
+        wrap.appendChild(x);
+      }
+      grid.appendChild(wrap);
+    }
+    setView('albums');
+    albumsEl.scrollTop = 0;
+  }
+
+  /* ---------- 뷰어 ---------- */
+  function openViewer(files) {
+    clearCovers();
+    items = files.map(o => ({ ...o, url: URL.createObjectURL(o.file) }));
+    index = 0;
+    setView('viewer');
+    show();
+    wake();
+  }
+
+  function closeViewer() {
+    img.removeAttribute('src');
+    items.forEach(i => URL.revokeObjectURL(i.url));
+    items = [];
+    clearTimeout(idleTimer);
+    viewer.classList.remove('idle');
+    if (document.fullscreenElement) document.exitFullscreen();
+    showGrid(gridNode || root);
+  }
+
+  function show() {
+    const it = items[index];
+    img.src = it.url;
+    img.alt = it.file.name;
+    nameEl.textContent = it.path;
+    countEl.textContent = `${index + 1} / ${items.length}`;
+    [index + 1, index - 1].forEach(i => {
+      if (items[i]) { const p = new Image(); p.src = items[i].url; }
+    });
+  }
+
+  function go(delta) {
+    const n = index + delta;
+    if (n < 0 || n >= items.length) return;
+    index = n;
+    show();
+  }
+
+  /* ---------- 입력 ---------- */
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && start.classList.contains('overlay')) { endDrag(); return; }
+    if (view === 'albums') {
+      if (e.key === 'Escape' && gridNode && gridNode !== root) { up(gridNode); e.preventDefault(); }
+      return;
+    }
+    if (view !== 'viewer') return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': go(1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': go(-1); break;
+      case ' ': go(e.shiftKey ? -1 : 1); break;
+      case 'Home': index = 0; show(); break;
+      case 'End': index = items.length - 1; show(); break;
+      case 'f': case 'F':
+        document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+        break;
+      case 'Escape': closeViewer(); e.preventDefault(); return;
+      default: return;
+    }
+    e.preventDefault();
+    wake();
+  });
+
+  backBtn.addEventListener('click', () => up(gridNode));
+  $('vback').addEventListener('click', closeViewer);
+  $('zl').addEventListener('click', () => go(-1));
+  $('zr').addEventListener('click', () => go(1));
+  viewer.addEventListener('wheel', e => { go(e.deltaY > 0 ? 1 : -1); wake(); }, { passive: true });
+  viewer.addEventListener('mousemove', wake);
+
+  function wake() {
+    viewer.classList.remove('idle');
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => viewer.classList.add('idle'), 2500);
+  }
+
+  /* ---------- 시작: 저장된 폴더 불러오기 ---------- */
+  (async () => {
+    db = await openDB();
+    lib = (await dbLoad()).map(r => ({ root: r.root, path: r.path, file: r.file }));
+    rebuild();
+    home();
+  })();
+})();
+</script>
+</body>
+</html>
